@@ -1,0 +1,25 @@
+{% extends 'base/base.html' %}
+
+{% block title %}Index {% endblock title %}
+
+{% block content %}
+    {% if not notes %}
+        <h4>No notes found</h4>
+    {% else %}
+        {% for note in notes %}
+            <h1>{{note.id}}. {{note.title}}</h1>
+            <p>{{note.description}}</p>
+            <small>{{note.date_uploaded}}</small>
+            <a href="">Edit</a>
+            <a href="{% url 'delete' id=note.id %}">Delete</a>
+            {% endfor %}
+    {% endif %}
+    
+<div class="container">
+    <a href="{% url 'add' %}">Add New notes</a>
+</div>
+    
+
+
+
+{% endblock content %}
